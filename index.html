@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>今天麓湾卖出去车位了么</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+          font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+          background: linear-gradient(135deg, #f5f9ff, #e6f7ff);
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 15px;
+      }
+      .card {
+          background: white;
+          border-radius: 16px;
+          box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+          padding: 25px; /* 减少内边距 */
+          width: 100%;
+          max-width: 90%; /* 响应式宽度 */
+          text-align: center;
+          transition: transform 0.2s ease;
+      }
+      /* 移除悬停效果，改为点击反馈 */
+      .card:active {
+          transform: scale(0.98);
+      }
+
+      h1 {
+          color: #2c6eaa;
+          font-size: clamp(1.2rem, 2vw + 0.8rem, 1.7rem); /* 自适应标题 */
+          margin-bottom: 28px;
+          line-height: 1.3;
+      }
+      .today-count {
+          font-size: clamp(2.5rem, 5vw + 1rem, 3.2rem); /* 自适应重点数据 */
+          font-weight: bold;
+          color: #e74c3c;
+          margin: 18px 0;
+          line-height: 1.1;
+      }
+      .label {
+          color: #5d6d7e;
+          font-size: 1.1rem;
+          margin-bottom: 15px;
+          display: block;
+      }
+      .total-count {
+          font-size: 1.2rem; /* 调整小字大小 */
+          color: #3498db; /* 强化视觉对比 */
+          font-weight: 500;
+          margin-top: 5px;
+      }
+      .source {
+          color: #7f8c8d;
+          font-size: 0.9rem; /* 增大来源文字 */
+          margin-top: 25px;
+          border-top: 1px dashed #eee;
+          padding-top: 15px;
+      }
+      .emoji {
+          font-size: 1.2rem;
+          margin-right: 3px;
+      }
+
+      /* 深色模式适配 */
+      @media (prefers-color-scheme: dark) {
+          body {
+              background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+              color: white;
+          }
+          .card {
+              background: #2d2d2d;
+              box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+          }
+          .today-count { color: #ff6b6b; }
+          .total-count { color: #999; }
+          .source { color: #999; }
+      }
+
+      /* 小屏幕适配 */
+      @media (max-width: 600px) {
+          .card {
+              padding: 20px;
+          }
+          .today-count { font-size: clamp(2rem, 5vw, 3rem); }
+      }
+  </style>
+</head>
+<body>
+    <div class="card">
+        <h1>今天麓湾卖出去车位了么？</h1>
+        
+        <!-- 今日销量（关键！） -->
+        <div id="today-sold" class="today-count">没有</div>
+        <div id="today-sold-label" class="label">今天卖出车位</div>
+        
+        <!-- 累计销量（小字！） -->
+        <div id="total-count" class="total-count">累计卖出：12个</div>
+        
+        <div class="source">
+            <span class="emoji">📍</span> 信息来源：成都市住建局 | 更新时间：<span id="time"></span>
+        </div>
+    </div>
+
+    <script>
+        const todaySold = 0;
+        const totalSold = 12;
+
+        const time = '2025/12/15'
+        
+        // 动态更新今日销量
+        document.getElementById('today-sold').textContent = todaySold === 0 ? '没有' : todaySold;
+        if(todaySold === 0) {
+          document.getElementById('today-sold-label').textContent = ''
+        }
+
+        document.getElementById('total-count').textContent = `累计卖出：${totalSold}个`;
+
+        
+        const now = new Date();
+        document.getElementById('time').textContent = time
+    </script>
+</body>
+</html>

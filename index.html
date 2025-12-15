@@ -100,7 +100,7 @@
         <div id="today-sold-label" class="label">今天卖出车位</div>
         
         <!-- 累计销量（小字！） -->
-        <div id="total-count" class="total-count">累计卖出：12个</div>
+        <div id="total-count" class="total-count">累计备案：12个</div>
         
         <div class="source">
             <span class="emoji">📍</span> 信息来源：成都市住建局 | 更新时间：<span id="time"></span>
@@ -119,7 +119,7 @@
           document.getElementById('today-sold-label').textContent = ''
         }
 
-        document.getElementById('total-count').textContent = `累计卖出：${totalSold}个`;
+        document.getElementById('total-count').textContent = `累计备案：${totalSold}个`;
 
         
         const now = new Date();
